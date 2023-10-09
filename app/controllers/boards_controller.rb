@@ -14,6 +14,8 @@ class BoardsController < ApplicationController
 
     @the_board = matching_boards.at(0)
 
+    @list_of_posts = Post.where({ :board_id => the_id }).order({ :expires_on => :asc })
+
     render({ :template => "boards/show" })
   end
 
